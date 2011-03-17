@@ -45,6 +45,8 @@ If you need a custom listen port, just supply that as an argument:
 
     ./script/server 8080
 
+Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Good luck!
+
 # Customize
 
 The file that controls what happens when is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
