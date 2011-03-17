@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+# Big thanks to:
+# http://onestepback.org/index.cgi/Tech/Ruby/WEBrick.rdoc
+
+require 'rubygems'
+require 'bundler'
+Bundler.setup(:default, :test)
+require 'webrick'
+require 'launchy'
+
+include WEBrick
+
+dir = Dir::pwd
+port = ARGV[0] || 3000
+
+puts "URL: http://#{Socket.gethostname}:#{port}"
+
+s = HTTPServer.new(
+  :Port            => port,
+  :DocumentRoot    => dir
+)
+
+trap("INT"){ s.shutdown }
+Launchy.open("http://#{Socket.gethostname}:#{port}")
+s.start
+
