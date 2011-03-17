@@ -19,6 +19,8 @@ You will also need to have the Bundler gem installed. You can install this into 
     rvm use default@global
     gem install bundler
     rvm use default
+
+Finally, you will need to install the LiveReload browser extension into your browser-du-jour ([Chrome Chrome Chome!](http://google.com/chrome)). For more detailed instructions, see the LiveReload's [github README](https://github.com/mockko/livereload) and look for the extension installation section.
     
 # How To Use
 
