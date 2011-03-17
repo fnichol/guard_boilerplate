@@ -59,6 +59,19 @@ to:
 
     watch(%r{images/.+\.(gif|png|jpeg|jpg)})
 
+# Development
+
+* Source hosted at [GitHub](http://github.com/fnichol/guard_boilerplate).
+* Report Issues/Questions/Feature requests on [GitHub Issues](http://github.com/fnichol/guard_boilerplate/issues).
+
+Pull requests are very welcome!
+
+# Authors
+
+* [Fletcher Nichol](http://github.com/fnichol) ([@fnichol](http://twitter.com/fnichol))
+
+Special credit to [Natasha Nunn](http://github.com/nnunn) ([@nnunny](http://twitter.com/nnunny)) for giving me the lunch hour power project idea
+
 # References
 
 * [Guard](https://github.com/guard/guard)
