@@ -35,6 +35,14 @@ To start the Guard process, just type:
 
     ./script/guard
 
+LiveReload needs to refresh an `http://` URL (rather than a `file://`), so there is a basic web server script that will share your current working directory by default on port 3000. To start it, open another shell, change into your project directory and run the script:
+    cd guard_boilerplate
+    ./script/server
+
+If you need a custom listen port, just supply that as an argument:
+
+    ./script/server 8080
+
 # Customize
 
 The file that controls what happens when is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
