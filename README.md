@@ -1,10 +1,25 @@
 # WTF?
 
-In the vein of the [html5boilerplate](http://html5boilerplate.com) project, this is a project skeleton that allows you to run [Guard](http://github.com/guard/guard) to refresh your web browser and optionally recompile [Sass](http://sass-lang.com/) files to CSS. You'll probably want to take these files, drop them into your boilerplate-like project and customize to your tastes.
+In the vein of the [HTML5 Boilerplate](http://html5boilerplate.com) project, this is a simple script that allows you to run [Guard](http://github.com/guard/guard) to refresh your web browser and optionally recompile [Sass](http://sass-lang.com/) files to CSS. Just install it, run`gbp start` in your project directory root and you're off to the races. A Guardfile gets created which you can customize to your tastes.
+
+# tl;dr
+
+Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplates? Great!
+
+1. Install the [LiveReload](https://github.com/mockko/livereload#readme) extension in your browser
+2. Install guard_boilerplate and start a new project:
+    gem install guard_boilerplate
+    mkdir my_site && cd !$
+    curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
+    gbp start
+3. Hit the **LR** button in your browser
+4. Edit!
+
+Confused? Read on...
 
 # Before!
 
-## Ruby And Bundler
+## Ruby
 
 You will need to have Ruby already installed on your system, but chances are you do already.
 
@@ -20,46 +35,43 @@ If you are on Mac OS X or Linux, then [RVM](http://rvm.beginrescueend.com/) to t
     BASHRC
     rvm 1.9.2 install && rvm 1.9.2 --default
 
-You will also need to have the Bundler gem installed. You can install this into your RVM Ruby's global gemset like so:
-
-    rvm use default@global
-    gem install bundler
-    rvm use default
-
 ### Windows (Rails Installer)
 
-This is slighty more than you'll need, but do yourself a favor and use the [Rails Installer](http://railsinstaller.org/) for Windows. It's fast, painless and as a bonus you'll be ready to crank out a [Ruby on Rails](http://rubyonrails.org/) or [Sinatra](http://www.sinatrarb.com/) web application in 5 minutes flat. And the Bundler gem ships with it. See, wasn't that easy?
+This is slighty more than you'll need, but do yourself a favor and use the [Rails Installer](http://railsinstaller.org/) for Windows. It's fast, painless and as a bonus you'll be ready to crank out a [Ruby on Rails](http://rubyonrails.org/) or [Sinatra](http://www.sinatrarb.com/) web application in 5 minutes flat. \[*pause...*\] See, wasn't that easy?
 
 ## LiveReload Browser Extension
 
-Finally, you will need to install the LiveReload browser extension into your browser-du-jour ([Chrome Chrome Chome!](http://google.com/chrome)). For more detailed instructions, see the LiveReload's [github README](https://github.com/mockko/livereload) and look for the extension installation section.
+Secondly, you will need to install the LiveReload browser extension into your browser-du-jour ([Chrome Chrome Chome!](http://google.com/chrome)). For more detailed instructions, see the LiveReload's [github README](https://github.com/mockko/livereload) and look for the extension installation section.
+
+# Install!
+
+Are you ready?
+
+    gem install guard_boilerplate
+
+Now give yourself a slap on the back.
 
 # Use!
 
-Clone this repo with git to your machine:
+Change directory into your new web-wonder project directory, and start the listener:
 
-    git clone git://github.com/fnichol/guard_boilerplate.git
+    cd my_site
+    gbp start
 
-Or download a zipfile if you don't rock the git-ness:
+Using the bassass [HTML5 Boilerplate](http://html5boilerplate.com/) as your base? I thought
+so. Try this one out, my Mac and Linux pals:
 
-    https://github.com/fnichol/guard_boilerplate/zipball/master
-
-Then change into that directory and run Bundler's `bundle` command to get all the gem dependencies:
-
-    cd guard_boilerplate
-    bundle
-
-To start the Guard process, just type:
-
-    ./script/guard
+    mkdir my_site && cd !$
+    curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
+    gbp start
 
 LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an embedded HTTP server will fire up by default on port 3000 thanks to the [WEBrick guard](https://github.com/fnichol/guard-webrick).
 
-Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Good luck!
+Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Open your `my_site` project in your text editor, update `index.html`, save, and marvel ;)
 
 # Customize!
 
-The file that controls what happens when is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
+The file that controls "what happens when" is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
 
 If your images directory was actually `images/` and could contain gifs, then you could modify the `Guardfile` line from:
 
@@ -68,6 +80,13 @@ If your images directory was actually `images/` and could contain gifs, then you
 to:
 
     watch(%r{images/.+\.(gif|png|jpeg|jpg)})
+
+If you need the HTTP server to run on another port, update the `'webrick'` block to:
+
+    guard 'webrick', :port => 8080 do
+    end
+
+Don't worry, your web browser will keep up.
 
 # Profit!
 
