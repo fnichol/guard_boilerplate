@@ -8,10 +8,12 @@ Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplate
 
 1. Install the [LiveReload](https://github.com/mockko/livereload#readme) extension in your browser
 2. Install guard_boilerplate and start a new project:
+
     gem install guard_boilerplate
     mkdir my_site && cd !$
     curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
     gbp start
+
 3. Hit the **LR** button in your browser
 4. Edit!
 
