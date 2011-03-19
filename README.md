@@ -10,7 +10,7 @@ Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplate
 2. Install guard_boilerplate and start a new project:
 
     gem install guard_boilerplate
-    mkdir my_site && cd !$
+    mkdir my_site && cd \!$
     curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
     gbp start
 
