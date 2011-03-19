@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'rubygems'
-require 'bundler'
-Bundler.setup(:default, :test)
-require 'guard'
-load File.join(Gem.loaded_specs['guard'].full_gem_path, 'bin', 'guard')

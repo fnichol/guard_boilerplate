@@ -4,7 +4,7 @@ guard 'sass' do
   watch(%r{sass/.+\.(scss|sass)})
 end
 
-guard 'webrick' do
+guard 'webrick', :port => 3000 do
 end
 
 guard 'livereload' do

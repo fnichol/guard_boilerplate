@@ -1,11 +1,4 @@
 source "http://rubygems.org"
 
-gem "launchy"
-
-gem "rb-fsevent", :platforms => :ruby
-gem "growl"
-
-gem "guard"
-gem "guard-sass"
-gem "guard-livereload"
-gem "guard-webrick"
+# Specify your gem's dependencies in guard_boilerplate.gemspec
+gemspec
