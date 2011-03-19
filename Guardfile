@@ -4,6 +4,9 @@ guard 'sass' do
   watch(%r{sass/.+\.(scss|sass)})
 end
 
+guard 'webrick' do
+end
+
 guard 'livereload' do
   watch(%r{.+\.(html|htm)})
   watch(%r{css/.+\.(css)})
