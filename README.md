@@ -1,10 +1,16 @@
-# What Is This?
+# WTF?
 
-In the vein of the [html5boilerplate](http://html5boilerplate.com) project, this is a project skeleton that allows you to run [Guard](http://github.com/guard/guard) to refresh your web browser and recompile [Sass](http://sass-lang.com/) files to CSS. You'll probably want to take these files, drop them into your boilerplate-like project and customize to your tastes.
+In the vein of the [html5boilerplate](http://html5boilerplate.com) project, this is a project skeleton that allows you to run [Guard](http://github.com/guard/guard) to refresh your web browser and optionally recompile [Sass](http://sass-lang.com/) files to CSS. You'll probably want to take these files, drop them into your boilerplate-like project and customize to your tastes.
 
-# Prerequisites
+# Before!
 
-You will need to have a Ruby implementation of some kind already installed. If you are on Mac OS X or Linux, then [RVM](http://rvm.beginrescueend.com/) to the rescue:
+## Ruby And Bundler
+
+You will need to have Ruby already installed on your system, but chances are you do already.
+
+### Mac OS X And Linux (RVM)
+
+If you are on Mac OS X or Linux, then [RVM](http://rvm.beginrescueend.com/) to the rescue:
 
     bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
     source "$HOME/.rvm/scripts/rvm"
@@ -20,13 +26,23 @@ You will also need to have the Bundler gem installed. You can install this into 
     gem install bundler
     rvm use default
 
-Finally, you will need to install the LiveReload browser extension into your browser-du-jour ([Chrome Chrome Chome!](http://google.com/chrome)). For more detailed instructions, see the LiveReload's [github README](https://github.com/mockko/livereload) and look for the extension installation section.
-    
-# How To Use
+### Windows (Rails Installer)
 
-Clone this repo to your machine with:
+This is slighty more than you'll need, but do yourself a favor and use the [Rails Installer](http://railsinstaller.org/) for Windows. It's fast, painless and as a bonus you'll be ready to crank out a [Ruby on Rails](http://rubyonrails.org/) or [Sinatra](http://www.sinatrarb.com/) web application in 5 minutes flat. And the Bundler gem ships with it. See, wasn't that easy?
+
+## LiveReload Browser Extension
+
+Finally, you will need to install the LiveReload browser extension into your browser-du-jour ([Chrome Chrome Chome!](http://google.com/chrome)). For more detailed instructions, see the LiveReload's [github README](https://github.com/mockko/livereload) and look for the extension installation section.
+
+# Use!
+
+Clone this repo with git to your machine:
 
     git clone git://github.com/fnichol/guard_boilerplate.git
+
+Or download a zipfile if you don't rock the git-ness:
+
+    https://github.com/fnichol/guard_boilerplate/zipball/master
 
 Then change into that directory and run Bundler's `bundle` command to get all the gem dependencies:
 
@@ -37,11 +53,11 @@ To start the Guard process, just type:
 
     ./script/guard
 
-LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an embedded HTTP server will fire up by default on port 3000 thanks to [Guard::WEBrick](https://github.com/fnichol/guard-webrick).
+LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an embedded HTTP server will fire up by default on port 3000 thanks to the [WEBrick guard](https://github.com/fnichol/guard-webrick).
 
 Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Good luck!
 
-# Customize
+# Customize!
 
 The file that controls what happens when is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
 
@@ -52,6 +68,10 @@ If your images directory was actually `images/` and could contain gifs, then you
 to:
 
     watch(%r{images/.+\.(gif|png|jpeg|jpg)})
+
+# Profit!
+
+Just fill in your [Step 2](http://www.youtube.com/watch?v=y-eak9Jz3_k) and you're on your way.
 
 # Development
 
