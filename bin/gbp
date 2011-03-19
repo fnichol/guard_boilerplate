@@ -3,6 +3,8 @@
 require 'rubygems'
 require 'thor'
 require 'guard'
+require 'fileutils'
+require 'sass'
 
 class GuardBoilerPlate < Thor
   include Thor::Actions
@@ -20,6 +22,27 @@ class GuardBoilerPlate < Thor
   def init
     copy_file( File.join(%w{templates Guardfile}), "Guardfile")
     copy_file( File.join(%w{README.md}), "HOWTOUSE.md")
+  end
+
+  desc "sassify", "Migrates *.css files to *.scss files"
+  def sassify
+    if File.directory? "sass"
+      say "\nA sass/ directory already exists, so skipping\n", :red
+    else
+      say "Converting CSS files to SCSS...", :green
+      FileUtils.mv "css", "sass", :verbose => true
+      FileUtils.mkdir_p "css", :verbose => true
+      Dir["sass/**/*.css"].each do |css|
+        scss = css.sub(/\.css$/, '.scss')
+        FileUtils.mv css, scss, :verbose => true
+
+        template = File.open(scss, 'rb') { |f| f.read }
+        sass_engine = Sass::Engine.new(template, :syntax => :scss)
+        output = sass_engine.render
+        File.open(css.sub(/^sass/, 'css'), 'w') {|f| f.write(output) }
+        say "Generated #{css.sub(/^sass/, 'css')} from #{scss}", :green
+      end
+    end
   end
 
   def self.source_root

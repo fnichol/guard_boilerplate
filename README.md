@@ -69,6 +69,12 @@ LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an em
 
 Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Open your `my_site` project in your text editor, update `index.html`, save, and marvel ;)
 
+Would you rather author Sass stylesheets? Migrate your `*.css` files to `*.scss` files automatically:
+
+    gbp sassify
+
+Your CSS files will be generated back into `css/` on save. Sweet.
+
 # Customize!
 
 The file that controls "what happens when" is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
@@ -114,4 +120,4 @@ Special credit to [Natasha Nunn](http://github.com/nnunn) ([@nnunny](http://twit
 * [LiveReload](https://github.com/mockko/livereload)
 * [Sass](http://sass-lang.com/)
 * [RVM](http://rvm.beginrescueend.com/)
-* [Bundler gem](http://gembundler.com/)
+* [Rails Installer](http://railsinstaller.org)
