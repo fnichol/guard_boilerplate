@@ -37,13 +37,7 @@ To start the Guard process, just type:
 
     ./script/guard
 
-LiveReload needs to refresh an `http://` URL (rather than a `file://`), so there is a basic web server script that will share your current working directory by default on port 3000. To start it, open another shell, change into your project directory and run the script:
-    cd guard_boilerplate
-    ./script/server
-
-If you need a custom listen port, just supply that as an argument:
-
-    ./script/server 8080
+LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an embedded HTTP server will fire up by default on port 3000 thanks to [Guard::WEBrick](https://github.com/fnichol/guard-webrick).
 
 Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Good luck!
 
@@ -77,6 +71,7 @@ Special credit to [Natasha Nunn](http://github.com/nnunn) ([@nnunny](http://twit
 * [Guard](https://github.com/guard/guard)
 * [Guard-LiveReload plugin](https://github.com/guard/guard-livereload)
 * [Guard-Sass plugin](https://github.com/guard/guard-sass)
+* [Guard-WEBrick plugin](https://github.com/fnichol/guard-webrick)
 * [LiveReload](https://github.com/mockko/livereload)
 * [Sass](http://sass-lang.com/)
 * [RVM](http://rvm.beginrescueend.com/)
