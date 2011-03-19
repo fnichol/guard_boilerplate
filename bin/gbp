@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler'
+Bundler.setup(:default, :test)
+require 'thor'
+require 'guard'
+
+class GuardBoilerPlate < Thor
+  desc "start", "Starts a guard process for development"
+  def start
+    load File.join(Gem.loaded_specs['guard'].full_gem_path, 'bin', 'guard')
+  end
+
+  desc "init", "Generates a Guardfile in the current working directory"
+  def init
+  end
+end
+
+GuardBoilerPlate.start
