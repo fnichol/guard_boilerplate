@@ -5,13 +5,25 @@ require 'thor'
 require 'guard'
 
 class GuardBoilerPlate < Thor
+  include Thor::Actions
+
   desc "start", "Starts a guard process for development"
   def start
+    unless File.exists?(File.expand_path(File.join(Dir::pwd, 'Guardfile')))
+      say "\nYou don't have a Guardfile in this directory, let's make it!", :green
+      invoke :init
+    end
     load File.join(Gem.loaded_specs['guard'].full_gem_path, 'bin', 'guard')
   end
 
   desc "init", "Generates a Guardfile in the current working directory"
   def init
+    copy_file( File.join(%w{templates Guardfile}), "Guardfile")
+    copy_file( File.join(%w{README.md}), "HOWTOUSE.md")
+  end
+
+  def self.source_root
+    File.expand_path(File.join(File.dirname(__FILE__), '..'))
   end
 end
 
