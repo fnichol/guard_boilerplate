@@ -10,6 +10,7 @@ end
 guard 'livereload' do
   watch(%r{.+\.(html|htm)})
   watch(%r{css/.+\.(css)})
+  watch(%r{sass/.+\.(scss|sass)})
   watch(%r{img/.+\.(png|jpeg|jpg)})
   watch(%r{js/.+\.(js)})
 end
