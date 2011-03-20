@@ -52,6 +52,38 @@ class GuardBoilerPlate < Thor
     end
   end
 
+  desc "minify", "Compresses your HTML files from Haml and CSS files from SCSS"
+  def minify
+    if File.directory? "haml"
+      say "\nMinifying HTML from Haml...", :green
+      Dir["haml/**/*.haml"].each do |haml_file|
+        haml_to_html(haml_file, :ugly => true)
+      end
+    end
+    if File.directory? "sass"
+      say "\nMinifying CSS from SCSS...", :green
+      Dir["sass/**/*.scss"].each do |scss_file|
+        scss_to_css(scss_file, :style => :compressed)
+      end
+    end
+  end
+
+  desc "prettify", "Pretties your HTML files from Haml and CSS files from SCSS"
+  def prettify
+    if File.directory? "haml"
+      say "\nPrettifying HTML from Haml...", :green
+      Dir["haml/**/*.haml"].each do |haml_file|
+        haml_to_html(haml_file)
+      end
+    end
+    if File.directory? "sass"
+      say "\nPrettifying CSS from SCSS...", :green
+      Dir["sass/**/*.scss"].each do |scss_file|
+        scss_to_css(scss_file)
+      end
+    end
+  end
+
   def self.source_root
     File.expand_path(File.join(File.dirname(__FILE__), '..'))
   end
@@ -66,6 +98,26 @@ class GuardBoilerPlate < Thor
     FileUtils.mkdir_p(File.dirname(haml_file))
     File.open(haml_file, 'w') {|f| f.write(output) }
     say "Generated #{haml_file} from #{html_file}", :green
+  end
+
+  def haml_to_html(haml_file, options = {})
+    options = { :format => :html5 }.update(options)
+    html_file = haml_file.sub(/^haml\//, '').sub(/\.haml$/, '.html')
+
+    template = File.open(haml_file, 'rb') { |f| f.read }
+    output = Haml::Engine.new(template, options).render
+    File.open(html_file, 'w') {|f| f.write(output) }
+    say "Generated #{html_file} from #{haml_file}", :green
+  end
+
+  def scss_to_css(scss_file, options = {})
+    options = { :syntax => :scss, :style => :expanded }.update(options)
+    css_file = scss_file.sub(/^sass/, 'css').sub(/\.scss$/, '.css')
+
+    template = File.open(scss_file, 'rb') { |f| f.read }
+    output = Sass::Engine.new(template, options).render
+    File.open(css_file, 'w') {|f| f.write(output) }
+    say "Generated #{css_file} from #{scss_file}", :green
   end
 end
 
