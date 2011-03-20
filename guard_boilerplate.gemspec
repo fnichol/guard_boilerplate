@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Fletcher Nichol"]
   s.email       = ["fnichol@nichol.ca"]
   s.homepage    = "http://rubygems.org/gems/guard_boilerplate"
-  s.summary     = %q{A simple script that allows you to run Guard to refresh your web browser and optionally recompile Sass files}
-  s.description = %q{A simple script that allows you to run Guard to refresh your web browser and optionally recompile Sass files}
+  s.summary     = %q{A simple script that allows you to run Guard to refresh your web browser and optionally recompile Sass/Haml files}
+  s.description = %q{A simple script that allows you to run Guard to refresh your web browser and optionally recompile Sass/Haml files}
 
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project = "guard_boilerplate"
