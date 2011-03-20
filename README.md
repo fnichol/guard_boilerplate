@@ -1,18 +1,19 @@
 # WTF?
 
-In the vein of the [HTML5 Boilerplate](http://html5boilerplate.com) project, this is a simple script that allows you to run [Guard](http://github.com/guard/guard) to refresh your web browser and optionally recompile [Sass](http://sass-lang.com/) files to CSS. Just install it, run`gbp start` in your project directory root and you're off to the races. A Guardfile gets created which you can customize to your tastes.
+In the vein of the [HTML5 Boilerplate](http://html5boilerplate.com) project, this is a simple script that allows you to run [Guard](http://github.com/guard/guard) to refresh your web browser and optionally recompile [Sass](http://sass-lang.com/) files to CSS and/or [Haml](http://haml-lang.com/) files to HTML. Just install it, run`gbp start` in your project directory root and you're off to the races. A Guardfile gets created which you can customize to your tastes.
 
 # tl;dr
 
-Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplates? Great!
+Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplates? Rocking Sass and Haml? Great!
 
 1. Install the [LiveReload](https://github.com/mockko/livereload#readme) extension in your browser
 2. Install guard_boilerplate and start a new project:
         gem install guard_boilerplate
         mkdir my_site && cd my_site
         curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
+        gbp hamlize && gbp sassify
         gbp start
-3. Hit the **LR** button in your browser
+3. Hit the LiveReload **LR** button in your browser
 4. Edit!
 
 Confused? Read on...
