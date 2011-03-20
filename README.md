@@ -53,6 +53,8 @@ Now give yourself a slap on the back.
 
 # Use!
 
+## Refresh Automatically
+
 Change directory into your new web-wonder project directory, and start the listener:
 
     cd my_site
@@ -69,11 +71,19 @@ LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an em
 
 Finally, if you're sitting there with your browser page open, don't forget to activate the LiveReload extension. Otherwise, it's going to get pretty darn boring. Open your `my_site` project in your text editor, update `index.html`, save, and marvel ;)
 
+## Sass Up Your Stylesheets
+
 Would you rather author Sass stylesheets? Migrate your `*.css` files to `*.scss` files automatically:
 
     gbp sassify
 
 Your CSS files will be generated back into `css/` on save. Sweet.
+
+## Haml Your Markup
+
+If Haml is your bag, then you can also convert your `*.html` files to `*.haml` with a quick round of:
+
+    gbp hamlize
 
 # Customize!
 

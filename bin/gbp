@@ -5,6 +5,7 @@ require 'thor'
 require 'guard'
 require 'fileutils'
 require 'sass'
+require 'haml/html'
 
 class GuardBoilerPlate < Thor
   include Thor::Actions
@@ -29,24 +30,41 @@ class GuardBoilerPlate < Thor
     if File.directory? "sass"
       say "\nA sass/ directory already exists, so skipping\n", :red
     else
-      say "Converting CSS files to SCSS...", :green
-      FileUtils.mv "css", "sass", :verbose => true
-      FileUtils.mkdir_p "css", :verbose => true
-      Dir["sass/**/*.css"].each do |css|
-        scss = css.sub(/\.css$/, '.scss')
-        FileUtils.mv css, scss, :verbose => true
-
-        template = File.open(scss, 'rb') { |f| f.read }
-        sass_engine = Sass::Engine.new(template, :syntax => :scss)
-        output = sass_engine.render
-        File.open(css.sub(/^sass/, 'css'), 'w') {|f| f.write(output) }
-        say "Generated #{css.sub(/^sass/, 'css')} from #{scss}", :green
+      say "Copying CSS files to SCSS...", :green
+      FileUtils.mkdir_p "sass", :verbose => true
+      Dir["css/**/*.css"].each do |css_file|
+        scss_file = css_file.sub(/^css/, 'sass').sub(/\.css$/, '.scss')
+        FileUtils.cp css_file, scss_file, :verbose => true
+        say "Generated #{scss_file} from #{css_file} (straight copy)", :green
       end
+    end
+  end
+
+  desc "hamlize", "Migrates your *.html files to *.haml files"
+  def hamlize
+    if File.directory? "haml"
+      say "\nA haml/ directory already exists, so skipping\n", :red
+    else
+      say "Converting HTML files to Haml...", :green
+      FileUtils.mkdir_p "haml", :verbose => true
+      Dir["**/*.html"].each { |html_file| html_to_haml(html_file) }
     end
   end
 
   def self.source_root
     File.expand_path(File.join(File.dirname(__FILE__), '..'))
+  end
+
+  private
+
+  def html_to_haml(html_file)
+    haml_file = File.join('haml', html_file.sub(/\.html?$/, '.haml'))
+
+    template = File.open(html_file, 'rb') { |f| f.read }
+    output = Haml::HTML.new(template).render
+    FileUtils.mkdir_p(File.dirname(haml_file))
+    File.open(haml_file, 'w') {|f| f.write(output) }
+    say "Generated #{haml_file} from #{html_file}", :green
   end
 end
 

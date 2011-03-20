@@ -20,7 +20,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'guard',             '~> 0.3.0'
   s.add_dependency 'guard-livereload',  '~> 0.1.9'
   s.add_dependency 'guard-sass',        '~> 0.0.6'
+  s.add_dependency 'guard-shell',       '~> 0.1.1'
   s.add_dependency 'guard-webrick',     '~> 0.1.0'
+  s.add_dependency 'hpricot',           '~> 0.8.4'
 
   s.files         = `git ls-files`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

@@ -4,6 +4,13 @@ guard 'sass' do
   watch(%r{sass/.+\.(scss|sass)})
 end
 
+guard 'shell' do
+  watch(%r{haml/(.+)\.haml}) do |m|
+    `haml #{File.join("haml", m[1])}.haml #{m[1]}.html`
+    puts "Rebuilt #{m[1]}.html"
+  end
+end
+
 guard 'webrick', :port => 3000 do
 end
 
