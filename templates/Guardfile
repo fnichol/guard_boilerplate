@@ -6,7 +6,7 @@ end
 
 guard 'shell' do
   watch(%r{haml/(.+)\.haml}) do |m|
-    `haml #{File.join("haml", m[1])}.haml #{m[1]}.html`
+    `haml -f html5 #{File.join("haml", m[1])}.haml #{m[1]}.html`
     puts "Rebuilt #{m[1]}.html"
   end
 end
