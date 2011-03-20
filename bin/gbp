@@ -25,7 +25,7 @@ class GuardBoilerPlate < Thor
     copy_file( File.join(%w{README.md}), "HOWTOUSE.md")
   end
 
-  desc "sassify", "Migrates *.css files to *.scss files"
+  desc "sassify", "Migrates CSS files to SCSS files"
   def sassify
     if File.directory? "sass"
       say "\nA sass/ directory already exists, so skipping\n", :red
@@ -34,13 +34,14 @@ class GuardBoilerPlate < Thor
       FileUtils.mkdir_p "sass", :verbose => true
       Dir["css/**/*.css"].each do |css_file|
         scss_file = css_file.sub(/^css/, 'sass').sub(/\.css$/, '.scss')
+        FileUtils.mkdir_p(File.dirname(scss_file))
         FileUtils.cp css_file, scss_file, :verbose => true
         say "Generated #{scss_file} from #{css_file} (straight copy)", :green
       end
     end
   end
 
-  desc "hamlize", "Migrates your *.html files to *.haml files"
+  desc "hamlize", "Migrates your HTML files to Haml files"
   def hamlize
     if File.directory? "haml"
       say "\nA haml/ directory already exists, so skipping\n", :red
