@@ -85,6 +85,18 @@ If Haml is your bag, then you can also convert your `*.html` files to `*.haml` w
 
     gbp hamlize
 
+## Minify Your Haml And SASS Output
+
+To compress your HTML and CSS output (suitable for production):
+
+    gbp minify
+
+## Prettify Your Haml And Sass Output
+
+To generate all your HTML and CSS output (suitable for development):
+
+    gbp prettify
+
 # Customize!
 
 The file that controls "what happens when" is your `Guardfile` which is pretty straight forward. The `'livereload'` block has a bundle of `watch` listeners that are file patterns. Whenever any of these files change, any attached web browsers will be reloaded with LiveReload.
