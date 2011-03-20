@@ -9,7 +9,7 @@ Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplate
 1. Install the [LiveReload](https://github.com/mockko/livereload#readme) extension in your browser
 2. Install guard_boilerplate and start a new project:
         gem install guard_boilerplate
-        mkdir my_site && cd !$
+        mkdir my_site && cd my_site
         curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
         gbp start
 3. Hit the **LR** button in your browser
@@ -61,7 +61,7 @@ Change directory into your new web-wonder project directory, and start the liste
 Using the bassass [HTML5 Boilerplate](http://html5boilerplate.com/) as your base? I thought
 so. Try this one out, my Mac and Linux pals:
 
-    mkdir my_site && cd !$
+    mkdir my_site && cd my_site
     curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
     gbp start
 
