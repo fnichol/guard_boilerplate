@@ -10,7 +10,7 @@ Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplate
 2. Install guard_boilerplate and start a new project:
         gem install guard_boilerplate
         mkdir my_site && cd my_site
-        curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
+        curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/master' | tar -xzf - --strip-components 1
         gbp hamlize && gbp sassify
         gbp start
 3. Hit the LiveReload **LR** button in your browser
@@ -65,7 +65,7 @@ Using the bassass [HTML5 Boilerplate](http://html5boilerplate.com/) as your base
 so. Try this one out, my Mac and Linux pals:
 
     mkdir my_site && cd my_site
-    curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/v1.0rc' | tar -xzf - --strip-components 1
+    curl -L 'https://github.com/paulirish/html5-boilerplate/tarball/master' | tar -xzf - --strip-components 1
     gbp start
 
 LiveReload needs to refresh an `http://` URL (rather than a `file://`), so an embedded HTTP server will fire up by default on port 3000 thanks to the [WEBrick guard](https://github.com/fnichol/guard-webrick).
