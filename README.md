@@ -61,7 +61,7 @@ Change directory into your new web-wonder project directory, and start the liste
     cd my_site
     gbp start
 
-Using the bassass [HTML5 Boilerplate](http://html5boilerplate.com/) as your base? I thought
+Using the badass [HTML5 Boilerplate](http://html5boilerplate.com/) as your base? I thought
 so. Try this one out, my Mac and Linux pals:
 
     mkdir my_site && cd my_site
