@@ -1,12 +1,12 @@
 # More info at https://github.com/guard/guard#readme
 
-guard 'sass' do
-  watch(%r{sass/.+\.(scss|sass)})
+guard 'sass', :output => '../css' do
+  watch(%r{assets/stylesheets/.+\.(scss|sass)})
 end
 
 guard 'shell' do
-  watch(%r{haml/(.+)\.haml}) do |m|
-    `haml -f html5 #{File.join("haml", m[1])}.haml #{m[1]}.html`
+  watch(%r{assets/views/(.+)\.haml}) do |m|
+    `haml -f html5 #{File.join("assets/views", m[1])}.haml #{m[1]}.html`
     puts "Rebuilt #{m[1]}.html"
   end
 end
@@ -16,9 +16,9 @@ end
 
 guard 'livereload' do
   watch(%r{.+\.(html|htm)})
-  watch(%r{haml/.+\.(haml)})
   watch(%r{css/.+\.(css)})
-  watch(%r{sass/.+\.(scss|sass)})
   watch(%r{img/.+\.(png|jpeg|jpg)})
   watch(%r{js/.+\.(js)})
+  watch(%r{assets/views/.+\.(haml)})
+  watch(%r{assets/stylesheets/.+\.(scss|sass)})
 end

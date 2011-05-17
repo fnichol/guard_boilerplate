@@ -27,13 +27,13 @@ class GuardBoilerPlate < Thor
 
   desc "sassify", "Migrates CSS files to SCSS files"
   def sassify
-    if File.directory? "sass"
+    if File.directory? "assets/stylesheets"
       say "\nA sass/ directory already exists, so skipping\n", :red
     else
       say "Copying CSS files to SCSS...", :green
-      FileUtils.mkdir_p "sass", :verbose => true
+      FileUtils.mkdir_p "assets/stylesheets", :verbose => true
       Dir["css/**/*.css"].each do |css_file|
-        scss_file = css_file.sub(/^css/, 'sass').sub(/\.css$/, '.scss')
+        scss_file = css_file.sub(/^css/, 'assets/stylesheets').sub(/\.css$/, '.scss')
         FileUtils.mkdir_p(File.dirname(scss_file))
         FileUtils.cp css_file, scss_file, :verbose => true
         say "Generated #{scss_file} from #{css_file} (straight copy)", :green
@@ -43,26 +43,26 @@ class GuardBoilerPlate < Thor
 
   desc "hamlize", "Migrates your HTML files to Haml files"
   def hamlize
-    if File.directory? "haml"
+    if File.directory? "assets/views"
       say "\nA haml/ directory already exists, so skipping\n", :red
     else
       say "Converting HTML files to Haml...", :green
-      FileUtils.mkdir_p "haml", :verbose => true
+      FileUtils.mkdir_p "assets/views", :verbose => true
       Dir["**/*.html"].each { |html_file| html_to_haml(html_file) }
     end
   end
 
   desc "minify", "Compresses your HTML files from Haml and CSS files from SCSS"
   def minify
-    if File.directory? "haml"
+    if File.directory? "assets/views"
       say "\nMinifying HTML from Haml...", :green
-      Dir["haml/**/*.haml"].each do |haml_file|
+      Dir["assets/views/**/*.haml"].each do |haml_file|
         haml_to_html(haml_file, :ugly => true)
       end
     end
-    if File.directory? "sass"
+    if File.directory? "assets/stylesheets"
       say "\nMinifying CSS from SCSS...", :green
-      Dir["sass/**/*.scss"].each do |scss_file|
+      Dir["assets/stylesheets/**/*.scss"].each do |scss_file|
         scss_to_css(scss_file, :style => :compressed)
       end
     end
@@ -70,15 +70,15 @@ class GuardBoilerPlate < Thor
 
   desc "prettify", "Pretties your HTML files from Haml and CSS files from SCSS"
   def prettify
-    if File.directory? "haml"
+    if File.directory? "assets/views"
       say "\nPrettifying HTML from Haml...", :green
-      Dir["haml/**/*.haml"].each do |haml_file|
+      Dir["assets/views/**/*.haml"].each do |haml_file|
         haml_to_html(haml_file)
       end
     end
-    if File.directory? "sass"
+    if File.directory? "assets/stylesheets"
       say "\nPrettifying CSS from SCSS...", :green
-      Dir["sass/**/*.scss"].each do |scss_file|
+      Dir["assets/stylesheets/**/*.scss"].each do |scss_file|
         scss_to_css(scss_file)
       end
     end
@@ -91,7 +91,7 @@ class GuardBoilerPlate < Thor
   private
 
   def html_to_haml(html_file)
-    haml_file = File.join('haml', html_file.sub(/\.html?$/, '.haml'))
+    haml_file = File.join('assets/views', html_file.sub(/\.html?$/, '.haml'))
 
     template = File.open(html_file, 'rb') { |f| f.read }
     output = Haml::HTML.new(template).render
@@ -102,7 +102,7 @@ class GuardBoilerPlate < Thor
 
   def haml_to_html(haml_file, options = {})
     options = { :format => :html5 }.update(options)
-    html_file = haml_file.sub(/^haml\//, '').sub(/\.haml$/, '.html')
+    html_file = haml_file.sub(/^assets\/views\//, '').sub(/\.haml$/, '.html')
 
     template = File.open(haml_file, 'rb') { |f| f.read }
     output = Haml::Engine.new(template, options).render
@@ -112,7 +112,7 @@ class GuardBoilerPlate < Thor
 
   def scss_to_css(scss_file, options = {})
     options = { :syntax => :scss, :style => :expanded }.update(options)
-    css_file = scss_file.sub(/^sass/, 'css').sub(/\.scss$/, '.css')
+    css_file = scss_file.sub(/^assets\/stylesheets/, 'css').sub(/\.scss$/, '.css')
 
     template = File.open(scss_file, 'rb') { |f| f.read }
     output = Sass::Engine.new(template, options).render
