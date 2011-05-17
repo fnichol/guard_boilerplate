@@ -50,6 +50,14 @@ Are you ready?
 
     gem install guard_boilerplate
 
+On the Mac?
+
+    gem install rb-fsevent
+
+On Linux?
+
+    gem install rb-inotify
+
 Now give yourself a slap on the back.
 
 # Use!
