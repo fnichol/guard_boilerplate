@@ -8,6 +8,7 @@ Impatient? Have Ruby installed and understand what a gem is? Use the Boilerplate
 
 1. Install the [LiveReload](https://github.com/mockko/livereload#readme) extension in your browser
 2. Install guard_boilerplate and start a new project:
+
         gem install guard_boilerplate
         if [ `uname -s` == "Darwin" ] ; then gem install rb-fsevent ; fi
         if [ `uname -s` == "Linux" ] ; then gem install rb-inotify ; fi
